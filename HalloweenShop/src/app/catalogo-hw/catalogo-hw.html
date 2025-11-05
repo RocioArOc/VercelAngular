@@ -1,0 +1,28 @@
+<div class="catalogo-container">
+    <h1 class="titulo">Catálogo de Halloween</h1>
+    
+    <div *ngIf="personas.length > 0">
+        <h3>Personas registradas</h3>
+        <ul>
+            <li *ngFor="let p of producto; let i=index">
+            {{ i + 1 }}. {{producto.nombre}} {{producto.precio}} {{producto.disponible}} 
+            </li>
+        </ul>
+    </div>
+    
+    <div class="productos-grid">
+    <div *ngFor="let producto of productos()" class="producto-card">
+        <img [src]="producto.imagen" [alt]="producto.nombre" class="producto-imagen">
+        <div class="producto-info">
+        <h2 class="producto-nombre">{{ producto.nombre }}</h2>
+        <p class="producto-precio">{{ producto.precio | currency:'USD' }}</p>
+        <ng-container *ngIf="producto.disponible; else noDisponible">
+            <button class="comprar-btn" (click)="comprar(producto)">Comprar</button>
+        </ng-container>
+        <ng-template #noDisponible>
+            <p class="no-disponible">No disponible</p>
+        </ng-template>
+        </div>
+    </div>
+    </div>
+</div>
