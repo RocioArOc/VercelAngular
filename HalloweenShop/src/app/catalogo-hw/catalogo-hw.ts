@@ -24,11 +24,6 @@ export class CatalogoHwComponent {
 
   nProductos:Producto[]=[];
 
-  onSubmit2(){
-    this.nProductos.push(new Producto (this.nProductos.nombre, this.nProductos.imagen, this.nProductos.precio, this.nProductos.disponible));
-    this.nProductos = new Producto ('','','','');
-  }
-
 
   comprar(producto: Producto): void {
     alert(`Has comprado: ${producto.nombre}`);
